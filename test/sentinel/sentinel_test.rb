@@ -72,7 +72,7 @@ class SentinelTest < Minitest::Test
     s2 = {
       sentinel: lambda do |command, *args|
         commands[:s2] << [command, *args]
-        ["127.0.0.1", "6381"]
+        [["ip", "127.0.0.1", "port", "6381"]]
       end
     }
 
@@ -109,7 +109,7 @@ class SentinelTest < Minitest::Test
     s2 = {
       sentinel: lambda do |command, *args|
         commands[:s2] << [command, *args]
-        ["127.0.0.1", "6381"]
+        [["ip", "127.0.0.1", "port", "6381"]]
       end
     }
 
@@ -146,7 +146,7 @@ class SentinelTest < Minitest::Test
         end,
         sentinel: lambda do |command, *args|
           commands[:s1] << [command, *args]
-          ['127.0.0.1', port.to_s]
+          [["ip", "127.0.0.1", "port", port.to_s]]
         end
       }
     end
@@ -189,7 +189,7 @@ class SentinelTest < Minitest::Test
         end,
         sentinel: lambda do |command, *args|
           commands[:s1] << [command, *args]
-          ['127.0.0.1', port.to_s]
+          [["ip", "127.0.0.1", "port", port.to_s]]
         end
       }
     end
@@ -232,7 +232,7 @@ class SentinelTest < Minitest::Test
         end,
         sentinel: lambda do |command, *args|
           commands[:s1] << [command, *args]
-          ['127.0.0.1', port.to_s]
+          [["ip", "127.0.0.1", "port", port.to_s]]
         end
       }
     end
@@ -275,7 +275,7 @@ class SentinelTest < Minitest::Test
         end,
         sentinel: lambda do |command, *args|
           commands[:s1] << [command, *args]
-          ['127.0.0.1', port.to_s]
+          [["ip", "127.0.0.1", "port", port.to_s]]
         end
       }
     end
@@ -309,7 +309,7 @@ class SentinelTest < Minitest::Test
     sentinel = lambda do |port|
       {
         sentinel: lambda do |_command, *_args|
-          ["127.0.0.1", port.to_s]
+          [["ip", "127.0.0.1", "port", port.to_s]]
         end
       }
     end
@@ -348,7 +348,7 @@ class SentinelTest < Minitest::Test
           if connections.count(id) < 2
             :close
           else
-            ["127.0.0.1", port.to_s]
+            [["ip", "127.0.0.1", "port", port.to_s]]
           end
         end
       }
